@@ -1,0 +1,28 @@
+<ion-content>
+  <div class="main-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let parking of parkings">
+          <ion-card class="parking-card" (click)="goToLogin()">
+            <ion-card-header>
+              <ion-card-title
+                [style.background]="getBackgroundGradient(parking.name)"
+              >
+                {{ parking.name }}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p class="location-blur">{{ parking.location }}</p>
+              <p class="price-no-blur">
+                <strong>Lugar:</strong> {{ parking.location }}
+              </p>
+              <p class="price-no-blur">
+                <strong>Precio:</strong> {{ parking.price }}
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

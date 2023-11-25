@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="form-container">
+    <form>
+      <h2>Pago</h2>
+      <ion-item>
+        <ion-label position="floating">Nombre en la tarjeta</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número de tarjeta</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fecha de expiración</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">CVV</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit" (click)="goToMain()"
+        >Pagar</ion-button
+      >
+    </form>
+  </div>
+</div>

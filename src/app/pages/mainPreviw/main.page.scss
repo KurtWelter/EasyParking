@@ -1,0 +1,47 @@
+/* ion-content.custom-background {
+  --ion-background-color: rgba(15, 9, 44, 0.979);
+} */
+.main-container {
+  background: url("../../../assets/img/Parking.jpg") no-repeat center center
+    fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parking-card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  cursor: pointer;
+}
+
+ion-card-title {
+  font-weight: bold;
+  padding: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.location-blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(3px);
+  color: transparent;
+}
+.price-no-blur {
+  color: #0f0f0f; /* Color del texto sin desenfoque */
+  /* Otros estilos que desees para el precio */
+}
+
+.parking-card:hover {
+  transform: translateY(-5px);
+}
