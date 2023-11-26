@@ -1,28 +1,58 @@
 <ion-content class="registration-container">
   <div class="container">
     <div class="form-container">
-      <form>
-        <h2>Registro</h2>
+      <form [formGroup]="forma" (ngSubmit)="goToLogin()">
+        <h2 class="title">Registro</h2>
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
-          <ion-input type="text" required></ion-input>
+          <ion-input formControlName="nombre_usuario" type="text" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Correo electrónico</ion-label>
-          <ion-input type="email" required></ion-input>
+          <ion-input formControlName="correo_usuario" type="email" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" required></ion-input>
+          <ion-input formControlName="pass1" type="password" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Confirmar contraseña</ion-label>
-          <ion-input type="password" required></ion-input>
+          <ion-input formControlName="pass2" type="password" required></ion-input>
         </ion-item>
-        <ion-button expand="block" type="submit" (click)="goToLogin()"
+        <br>
+        <ion-text color="danger" *ngIf="nombreNoValido">
+          <p class="mensaje">El nombre no es valido</p>
+        </ion-text>
+        <ion-text color="danger" *ngIf="correoNoValido">
+          <p class="mensaje">El email no es invalido</p>
+        </ion-text>
+        <ion-text color="danger" *ngIf="pass1NoValido">
+          <p class="mensaje">La contraseña es obligatoria</p>
+        </ion-text>
+        <ion-text color="danger" *ngIf="pass2NoValido">
+          <p class="mensaje">La confirmacion de contraseña es obligatoria</p>
+        </ion-text>
+        <ion-text color="danger" *ngIf="forma.controls['pass2'].errors?.['Match']">
+          <p class="mensaje">Las contraseñas no coinciden</p>
+        </ion-text>
+        <ion-text class="ion-text-center" color="success">
+          <p>{{mensaje}}</p>
+        </ion-text>
+        <ion-text color="danger">
+          <p class="mensaje">{{men}}</p>
+        </ion-text>
+        <ion-button [disabled]="(forma.status) === 'INVALID'" expand="block" type="submit" 
           >Registrarse</ion-button
         >
       </form>
+      <!-- <pre>Estado formulario:{{forma.valid}}
+        <br>
+        Status:{{forma.status}}
+    
+      </pre>
+      <pre>
+        {{forma.value | json}}
+      </pre> -->
     </div>
   </div>
 </ion-content>

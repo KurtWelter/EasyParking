@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
     path: 'main',
     loadChildren: () =>
       import('./pages/main/main.module').then((m) => m.MainPageModule),
+      canLoad: [AuthGuard]
   },
   {
     path: 'registro',
@@ -45,6 +47,7 @@ const routes: Routes = [
     path: 'pago/:parkingName', //pago/:parkingName
     loadChildren: () =>
       import('./pages/pago/pago.module').then((m) => m.PagoPageModule),
+      canLoad: [AuthGuard]
   },
 ];
 

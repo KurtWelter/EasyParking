@@ -1,11 +1,30 @@
 <div class="login-container">
   <div class="login-box">
     <h2>Iniciar sesión</h2>
-    <form>
-      <input type="email" placeholder="Correo electrónico" required />
-      <input type="password" placeholder="Contraseña" required />
-      <button type="submit" (click)="goToMain()">Iniciar sesión</button>
+    <form [formGroup]="forma" (ngSubmit)="goToMain()">
+      <input formControlName="correo_usuario" type="email" placeholder="Correo electrónico" required />
+      <input formControlName="password" type="password" placeholder="Contraseña" required />
+      <ion-text color="danger" *ngIf="correoNoValido">
+        <p class="mensaje">El email no es invalido</p>
+      </ion-text>
+      <ion-text color="danger" *ngIf="pass1NoValido">
+        <p class="mensaje">La contraseña es obligatoria</p>
+      </ion-text>
+      <ion-text color="danger">
+        <p class="mensaje">{{mensaje}}</p>
+      </ion-text>
+      <ion-button [disabled]="(forma.status) === 'INVALID'" expand="block" type="submit" 
+          >Iniciar Sesión</ion-button
+        >
     </form>
+    <!-- <pre>Estado formulario:{{forma.valid}}
+      <br>
+      Status:{{forma.status}}
+  
+    </pre>
+    <pre>
+      {{forma.value | json}}
+    </pre> -->
     <div class="options">
       <a href="#" [routerLink]="['/registro']">Registro</a>
       <a href="#" [routerLink]="['/olvido-contrasena']">Olvidé mi contraseña</a>
